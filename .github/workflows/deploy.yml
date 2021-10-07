@@ -1,5 +1,9 @@
 name: DevPortal Deployment
-on: [push]
+on:
+  push:
+    branches:
+      - master
+
 jobs:
   run:
     runs-on: ubuntu-latest
