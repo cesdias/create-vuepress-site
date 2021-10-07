@@ -8,18 +8,18 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-        - name: Install s3deploy
-          run: curl -L https://github.com/bep/s3deploy/releases/download/v2.4.0/s3deploy_2.4.0_Linux-64bit.tar.gz | tar xvz
+      - name: Install s3deploy
+        run: curl -L https://github.com/bep/s3deploy/releases/download/v2.4.0/s3deploy_2.4.0_Linux-64bit.tar.gz | tar xvz
 
-        - name: Install dependencies
-          run: cd docs && npm install
+      - name: Install dependencies
+        run: cd docs && npm install
 
-        - name: Build
-          run: cd docs && npm run build
+      - name: Build static website
+        run: cd docs && npm run build
 
-      - name: Deploy
+      - name: Deploy to AWS
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
